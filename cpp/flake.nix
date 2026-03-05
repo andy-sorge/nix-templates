@@ -11,6 +11,7 @@
         cmake
         gdb
         gnumake
+        clang-tools
       ];
     };
   };
