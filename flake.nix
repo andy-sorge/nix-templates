@@ -3,7 +3,7 @@
     templates = {
       cpp = {
         path = ./cpp;
-        description = "Basic C++ dev shell";
+        description = "C++ dev shell";
       };
     };
   };

@@ -7,11 +7,10 @@
   in {
     devShells.x86_64-linux.default = pkgs.mkShell {
       buildInputs = with pkgs; [
-        gcc
-        cmake
-        gdb
-        gnumake
+        clang
         clang-tools
+        cmake
+        gnumake
       ];
     };
   };

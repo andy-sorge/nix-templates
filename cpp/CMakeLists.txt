@@ -1,10 +1,16 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 4.1)
 project(newProj)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_executable(${PROJECT_NAME} main.cpp)
+file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
+file(GLOB_RECURSE HEADERS CONFIGURE_DEPENDS include/*.hpp include/*.h)
 
-# configure_file(data.txt ${CMAKE_BINARY_DIR}/data.txt COPYONLY)
+add_executable(${PROJECT_NAME} main.cpp ${SOURCES} ${HEADERS})
+
+file(GLOB RESOURCES CONFIGURE_DEPENDS resource/*.txt resource/*.csv)
+foreach(RES ${RESOURCES})
+    configure_file(${RES} ${CMAKE_BINARY_DIR} COPYONLY)
+endforeach()
